@@ -55,7 +55,7 @@ class Vectorizer:
         self.wss_url += f'?lc=en-US&len={img.size}&w={img.width}'
         self.wss_url += f'&h={img.height}&filename={img.filename}'
 
-        with connect(self.wss_url) as websocket:
+        with connect(self.wss_url,max_size=None) as websocket:
             websocket: ClientConnection = websocket
             websocket.send(json.dumps({
                 "index": 0, "command": 0
