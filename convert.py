@@ -3,6 +3,7 @@ from websockets.sync.client import connect, ClientConnection
 from PIL import Image
 import requests
 import io
+from datetime import datetime
 
 DEFAULT_DOWNLOAD_OPTIONS = """file_format=svg&svg.version=svg_1_1&dxf.compatibility_level=lines_and_arcs&draw_style=fill_shapes&shape_stacking=cutouts&group_by=none&curves.allowed.quadratic_bezier=true&curves.allowed.quadratic_bezier=true&curves.allowed.cubic_bezier=true&curves.allowed.cubic_bezier=true&curves.allowed.circular_arc=true&curves.allowed.circular_arc=true&curves.allowed.elliptical_arc=true&curves.allowed.elliptical_arc=true&curves.line_fit_tolerance=0.1&gap_filler.enabled=true&gap_filler.non_scaling_stroke=true&gap_filler.non_scaling_stroke=true&gap_filler.stroke_width=2.0&strokes.non_scaling_stroke=true&strokes.non_scaling_stroke=true&strokes.stroke_width=1.0&pdf.version=PDF_1_4&eps.version=PS_3_0_EPSF_3_0"""
 path = "D:\\svg\\"
@@ -119,11 +120,16 @@ class Vectorizer:
         print("INFO: Download success")
         return resp.content
 
+def current_time():
+    now = datetime.now()
+    current_time_str = now.strftime("%H:%M:%S")
+    return current_time_str
+
 if __name__ == '__main__':
     for i in range(100):
-        print("__________________________\n")
-        print("Chuyen doi anh thu {}".format(i+1))
-        print("__________________________\n")
+        print("______________________________________\n")
+        print(current_time() + "\tChuyen doi anh thu {}".format(i+1))
+        print("______________________________________\n")
         fileName = "neg_" + str(i) + ".jpg"
         img_data = open(path_in + fileName, 'rb').read()
         if img_data is None:
