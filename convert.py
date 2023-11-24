@@ -145,3 +145,4 @@ if __name__ == '__main__':
         lines[2] = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0.00 0.00 1280.00 720.00" width="1280.00" height="720.00">\n'
         with open(path + fileOut, 'w') as f:
             f.writelines(lines)
+    print("DONE!")
